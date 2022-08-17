@@ -1,0 +1,33 @@
+.breadcrumb {
+    list-style: none;
+    margin: 0;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    padding: 25px 0;
+    flex-wrap: wrap;
+    height: auto;
+}
+
+.breadcrumb li {
+    margin-top: 10px;
+}
+
+.breadcrumb li:last-child {
+    font-weight: bold;
+}
+
+.breadcrumb li a:hover {
+    color: var(--eletron);
+}
+
+.breadcrumb li a {
+
+}
+
+@media (max-width: 768px) {
+    .breadcrumb li a{
+        font-size: 12px;
+    }
+}

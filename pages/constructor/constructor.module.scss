@@ -1,0 +1,44 @@
+.constructorImgWrapper {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: -webkit-linear-gradient(#f7f7f7 1px, transparent 1px),
+    -webkit-linear-gradient(left, #f7f7f7 1px, transparent 1px),
+    -webkit-linear-gradient(#f7f7f7 1px, transparent 1px),
+    -webkit-linear-gradient(left, #f7f7f7 1px, transparent 1px),
+    -webkit-linear-gradient(#f7f7f7 1px, transparent 1px),
+    -webkit-linear-gradient(left, #f7f7f7 1px, transparent 1px);
+  background-image: linear-gradient(#f7f7f7 1px, transparent 1px),
+    linear-gradient(90deg, #f7f7f7 1px, transparent 1px),
+    linear-gradient(#f7f7f7 1px, transparent 1px),
+    linear-gradient(90deg, #f7f7f7 1px, transparent 1px),
+    linear-gradient(#f7f7f7 1px, transparent 1px),
+    linear-gradient(90deg, #f7f7f7 1px, transparent 1px);
+  background-size: 180px 180px, 180px 180px, 9px 9px, 9px 9px, 36px 36px,
+    36px 36px;
+  background-position: -1px -1px, -1px -1px, 0 0, 0 0, -1px -1px, -1px -1px;
+  img {
+    max-width: 250px;
+    max-height: 250px;
+  }
+}
+
+.constructorSetting {
+  display: flex;
+  &Item {
+    text-transform: uppercase;
+    margin-bottom: 7px;
+    font-size: 10px;
+    color: #888888;
+    font-weight: 500;
+    &.constructorFrame {
+      display: flex;
+      &Horiz {
+        &::before,
+        &::after {
+        }
+      }
+    }
+  }
+}
