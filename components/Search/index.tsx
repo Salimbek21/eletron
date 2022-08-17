@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import PriceRefactor from "../Refactors/PriceRefactor";
 import AddToCartBtn from "../Buttons/AddToCartBtn";
@@ -8,7 +8,6 @@ import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import LoaderDots from "../Loader/LoaderDots";
 import { useRouter } from "next/router";
 import { FaTimes } from "react-icons/fa";
-import useDebounce from "./use-debounce"
 
 const Search = () => {
   const [searchHidden, setSearchHidden] = useState<boolean>(true);
@@ -19,8 +18,6 @@ const Search = () => {
     (state) => state.search
   );
   const router = useRouter();
-
-    const debouncedSearchTerm = useDebounce(search, 500);
 
   const handleClickAway = () => {
     setSearchHidden(true);
@@ -45,33 +42,16 @@ const Search = () => {
     }
   };
 
-
-  React.useEffect(
-    () => {
-      if (debouncedSearchTerm) {
-        setSearchHidden(true);
-        getSearchResults(debouncedSearchTerm).then(() => {
-          setSearchHidden(false);
-          searchProducts
-        });
-      } else {
-        searchProducts
-        setSearchHidden(false);
-      }
-    },
-    [debouncedSearchTerm] 
-  );
-
-  // const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   if (searchHidden) {
-  //     setSearchHidden(false);
-  //   }
-  //   setSearch(e.target.value);
-  //   clearSearchResults();
-  //   setTimeout(() => {
-  //     getSearchResults(e.target.value);
-  //   }, 250);
-  // };
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (searchHidden) {
+      setSearchHidden(false);
+    }
+    setSearch(e.target.value);
+    clearSearchResults();
+    setTimeout(() => {
+      getSearchResults(e.target.value);
+    }, 250);
+  };
 
   const shouldSearchHide = () => {
     if (searchHidden) {
@@ -133,7 +113,7 @@ const Search = () => {
                 <input
                   autoComplete="off"
                   type="text"
-                  onChange={(e) => setSearch(e.target.value)}
+                  onChange={handleSearchChange}
                   name="search"
                   value={search}
                   required={true}
